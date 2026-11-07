@@ -1,0 +1,97 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #0c1424;
+}
+
+canvas {
+  display: block;
+}
+
+
+canvas:focus { outline: none; }
+
+.audio-panel {
+  position: fixed;
+  left: 20px;
+  bottom: 16px;
+  width: 260px;
+  max-width: calc(100vw - 40px);
+  padding: 10px 14px;
+  color: #edf3fa;
+  background: rgba(8, 14, 25, 0.94);
+  border: 1px solid #35485e;
+  border-radius: 6px;
+  font: 13px/1.5 monospace;
+  accent-color: #a6dece;
+}
+.audio-panel:not([open]) { width: auto; }
+.audio-panel summary { cursor: pointer; color: #a6dece; }
+.audio-panel p { margin: 12px 0; color: #a0b3c8; }
+.audio-panel label { display: block; margin-top: 10px; }
+.audio-panel input[type="range"] { width: 100%; cursor: pointer; }
+.audio-panel .mute { margin-top: 4px; color: #a0b3c8; }
+.audio-panel button {
+  margin-top: 16px;
+  padding: 6px 10px;
+  color: #edf3fa;
+  background: #1b3047;
+  border: 1px solid #7995b0;
+  border-radius: 4px;
+  cursor: pointer;
+  font: inherit;
+}
+.audio-panel :focus-visible { outline: 2px solid #a6dece; outline-offset: 3px; }
+@media (min-height: 1600px) {
+  .audio-panel { left: 40px; bottom: 32px; width: 390px; font-size: 18px; padding: 15px 21px; }
+}
+
+[hidden] { display: none !important; }
+.playtest-panel {
+  position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  width: min(520px, calc(100vw - 40px)); max-height: calc(100vh - 40px); overflow: auto;
+  padding: 28px 32px; border: 1px solid #35485e; border-radius: 10px;
+  background: rgba(8, 14, 25, 0.97); color: #edf3fa; font: 14px/1.5 monospace;
+}
+.playtest-panel h1 { color: #a6dece; font-size: 30px; letter-spacing: 2px; }
+.playtest-panel .tagline { color: #a0b3c8; margin: 4px 0 20px; }
+.playtest-panel label { display: block; margin-top: 14px; margin-bottom: 5px; }
+.playtest-panel input, .playtest-panel select {
+  width: 100%; padding: 9px 10px; color: #edf3fa; background: #15273a;
+  border: 1px solid #7995b0; border-radius: 4px; font: inherit;
+}
+.playtest-panel button {
+  padding: 9px 12px; color: #edf3fa; background: #1b3047; border: 1px solid #7995b0;
+  border-radius: 4px; cursor: pointer; font: inherit;
+}
+.playtest-panel .primary { width: 100%; background: #264c50; border-color: #a6dece; font-weight: bold; }
+.playtest-panel .best { margin: 18px 0 10px; }
+.playtest-panel .best + .hint:not([hidden]) { margin: -5px 0 12px; }
+.playtest-panel .hint { font-size: 12px; color: #a0b3c8; margin-top: 8px; }
+.playtest-panel .instructions { margin-top: 20px; padding-top: 14px; border-top: 1px solid #35485e; }
+.playtest-panel .instructions p + p { margin-top: 4px; }
+.playtest-panel .sharing { margin-top: 16px; }
+.playtest-panel .sharing button { margin: 0 4px 5px 0; }
+.playtest-panel .version-warning { color: #f2cf87; margin-top: 12px; }
+.playtest-panel :focus-visible { outline: 2px solid #a6dece; outline-offset: 3px; }
+.playtest-panel.result-panel { top: auto; bottom: 90px; transform: translateX(-50%); padding: 16px 24px; text-align: center; }
+.playtest-panel .session-actions { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.playtest-panel .seed-label { overflow-wrap: anywhere; margin-bottom: 10px; }
+.build-version { position: fixed; top: 12px; left: 20px; color: #a0b3c8; font: 11px monospace; pointer-events: none; }
+@media (min-height: 1600px) {
+  .playtest-panel { width: 760px; padding: 40px 48px; font-size: 20px; }
+  .playtest-panel h1 { font-size: 44px; }
+  .playtest-panel .hint { font-size: 17px; }
+  .playtest-panel.result-panel { bottom: 180px; }
+  .build-version { top: 24px; left: 40px; font-size: 16px; }
+}
+
+.frame-profile { position: fixed; right: 20px; top: 16px; padding: 10px; white-space: pre-line; background: #080e19; color: #edf3fa; font: 12px/1.6 monospace; pointer-events: none; }

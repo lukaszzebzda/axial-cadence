@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Axial Cadence — Prototype</title>
+    <link rel="stylesheet" href="style.css?v=0.2.0+589fd17" />
+  </head>
+  <body>
+    <canvas id="game" tabindex="0" aria-label="Plansza gry Axial Cadence"></canvas>
+    <section id="playtest-panel" class="playtest-panel" aria-label="Menu gry">
+      <div data-start-menu>
+        <h1>AXIAL CADENCE</h1>
+        <p class="tagline">Przetrwaj kolejne zmiany areny.</p>
+        <form data-start-form>
+          <label for="game-mode">Tryb gry</label>
+          <select id="game-mode">
+            <option value="RANDOM">RANDOM · losowy bieg</option>
+            <option value="SEEDED">SEEDED · wyzwanie z seedem</option>
+            <option value="TRAINING">TRAINING · ćwiczenia</option>
+          </select>
+          <p data-mode-description class="hint"></p>
+          <div data-seed-row hidden>
+            <label for="challenge-seed">Seed wyzwania</label>
+            <input id="challenge-seed" type="text" maxlength="128" autocomplete="off" spellcheck="false" />
+          </div>
+          <div data-practice-row hidden>
+            <label for="practice">Ćwiczenie</label>
+            <select id="practice"></select>
+          </div>
+          <p data-menu-best class="best"></p>
+          <p data-legacy-best hidden class="hint"></p>
+          <button class="primary" type="submit">Graj · Spacja</button>
+        </form>
+        <div class="instructions">
+          <p><strong>← → / A D</strong> · poruszanie się po orbicie</p>
+          <p><strong>Esc</strong> · pauza i powrót do gry</p>
+          <p><strong>Spacja</strong> · start i szybka powtórka po błędzie</p>
+          <p class="hint">Przechodź przez luki. Bok ściany zatrzymuje ruch, jej najazd kończy bieg.</p>
+        </div>
+      </div>
+      <div data-result-actions hidden>
+        <p data-result-seed class="seed-label"></p>
+        <div class="session-actions">
+          <button type="button" data-resume hidden>Wznów · Esc / Spacja</button>
+          <button type="button" data-menu-return>Wybierz tryb / zmień seed</button>
+        </div>
+      </div>
+      <div data-sharing hidden class="sharing">
+        <button type="button" data-copy="seed">Kopiuj seed</button>
+        <button type="button" data-copy="link">Kopiuj link do wyzwania</button>
+        <p class="hint">Porównuj wyniki na tej samej wersji gry i w tym samym formacie okna.</p>
+      </div>
+      <p data-version-warning hidden class="version-warning">Link pochodzi z innej wersji gry. Układ przeszkód może się różnić.</p>
+      <p data-share-status role="status" class="hint"></p>
+      <input data-copy-fallback hidden readonly aria-label="Tekst do ręcznego skopiowania" />
+    </section>
+    <output id="frame-profile" class="frame-profile" hidden aria-label="Profil klatek"></output>
+    <span id="build-version" class="build-version"></span>
+    <details id="audio-panel" class="audio-panel">
+      <summary>Dźwięk</summary>
+      <p data-audio-status role="status">Dźwięk uruchomi się po naciśnięciu Space.</p>
+      <label for="music-volume">Muzyka</label>
+      <input id="music-volume" type="range" min="0" max="100" value="35" />
+      <label class="mute"><input id="music-muted" type="checkbox" /> Wycisz muzykę</label>
+      <label for="effects-volume">Efekty</label>
+      <input id="effects-volume" type="range" min="0" max="100" value="45" />
+      <label class="mute"><input id="effects-muted" type="checkbox" /> Wycisz efekty</label>
+      <button type="button" data-audio-close>Wróć do gry</button>
+    </details>
+
+    <script type="module" src="assets/589fd17/main.js"></script>
+  </body>
+</html>
